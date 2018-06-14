@@ -45,7 +45,7 @@ The example images were sampled from the validation set of the Cityscapes datase
 
 Lindau38            |  Munster43
 :-------------------------:|:-------------------------:
-![Screenshot](docs/lindau_38.png)  |  [Screenshot](docs/munster_43.png)
+![Screenshot](docs/lindau_38.png)  |  [Screenshot](docs/munster_98.png)
 
 Munster98          |  Munster116
 :-------------------------:|:-------------------------:
