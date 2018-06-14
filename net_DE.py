@@ -268,7 +268,7 @@ def resnet50_up_proj_unet_hyb(pretrained=0, load_path='', **kwargs):
     return model
 '''
 
-def hyb_net(load_path='model_weights/resnet_hyb_DE.model', use_gpu=False, **kwargs):
+def hyb_net(load_path='resnet_hyb_DE.model', use_gpu=False, **kwargs):
 
     model = ResNetUpProjUnetHyb(Bottleneck, [3, 4, 6, 3], **kwargs)
     
