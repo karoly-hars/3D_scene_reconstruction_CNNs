@@ -43,10 +43,8 @@ python3 predict_img.py <path_to_image> <focal_lenght>
 ### Examples
 The example images were sampled from the validation set of the Cityscapes dataset. The images were cropped slighly to hide the hood of the 'ego vehicle'.
 
-![Screenshot](docs/lindau_38.png)
-![Screenshot](docs/munster_43.png)
-![Screenshot](docs/munster_98.png)
-![Screenshot](docs/munster_116.png)
+![Screenshot](docs/lindau_38.png) ![Screenshot](docs/munster_43.png)
+![Screenshot](docs/munster_98.png) ![Screenshot](docs/munster_116.png)
 
  
 ### Remarks
