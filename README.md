@@ -36,12 +36,12 @@ Based on the focal length of our camera and the depth estimation we can transfor
 
 I used an NVIDIA card with ~8 GB memory for testing. Since the two networks will not necessarily fit into the memory of a single GPU it might be more practical to modify the code and run the depth and semantic predictions sequentially instead of parallelly.
 
-### Usage
+### How to
 ```sh
 python3 predict_img.py <path_to_image> <focal_lenght>
 ```
 ### Examples
-The example images were sampled from the validation set of the Cityscapes dataset. The images were cropped slighly to hide the hood of the 'ego vehicle'.
+The example images were sampled from the validation set of the Cityscapes dataset. The images were cropped to hide the hood of the 'ego vehicle'.
 
 Munster98          |  Munster116
 :-------------------------:|:-------------------------:
