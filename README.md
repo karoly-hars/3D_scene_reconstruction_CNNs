@@ -47,9 +47,9 @@ Munster98          |  Munster116
 :-------------------------:|:-------------------------:
 ![Screenshot](docs/munster_98.png) | ![Screenshot](docs/munster_116.png)
 
-Munster98          |  Munster116
+Lindau38          |  Munster43
 :-------------------------:|:-------------------------:
-![Screenshot](docs/munster_98.png) | ![Screenshot](docs/munster_116.png)
+![Screenshot](docs/lindau_38.png) | ![Screenshot](docs/munster_43.png)
 
  
 ### Remarks
