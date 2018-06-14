@@ -244,7 +244,7 @@ class ResNetUpProjUnetHyb(nn.Module):
 
 
 
-def hyb_net(load_path='model_weights/resnet_hyb_seg.model', use_gpu=False, **kwargs):
+def hyb_net(load_path='resnet_hyb_seg.model', use_gpu=False, **kwargs):
 
     model = ResNetUpProjUnetHyb(Bottleneck, [3, 4, 6, 3], **kwargs)
     
