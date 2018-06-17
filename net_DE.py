@@ -242,32 +242,6 @@ class ResNetUpProjUnetHyb(nn.Module):
         return x
 
 
-'''
-def resnet50_up_proj_unet_hyb(pretrained=0, load_path='', **kwargs):
-    """Constructs a ResNet-50 model.
-    Args:
-        pretrained (int): 1 download model pretrained on ImageNet, 2 use previously saved model
-    """
-    model = ResNetUpProjUnetHyb(Bottleneck, [3, 4, 6, 3], **kwargs)
-        
-    if pretrained == 1:
-        
-        pretrained_dict = model_zoo.load_url(model_url) 
-        model_dict = model.state_dict()
-        
-        # 1. filter out unnecessary keys
-        pretrained_dict = {k: v for k, v in pretrained_dict.items() if k in model_dict}
-        # 2. overwrite entries in the existing state dict
-        model_dict.update(pretrained_dict) 
-        # 3. load the new state dict
-        model.load_state_dict(model_dict)
-        
-    elif pretrained == 2:
-        model.load_state_dict(torch.load(load_path))
-
-    return model
-'''
-
 def hyb_net(load_path='resnet_hyb_DE.model', use_gpu=False, **kwargs):
 
     model = ResNetUpProjUnetHyb(Bottleneck, [3, 4, 6, 3], **kwargs)
