@@ -30,7 +30,6 @@ Based on the focal length of our camera and the depth estimation we can transfor
 - opencv
 - matplotlib
 - numpy
-- curl
 - colormap 
 - easydev
 
