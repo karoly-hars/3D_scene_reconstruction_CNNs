@@ -249,7 +249,7 @@ def hyb_net(load_path='resnet_hyb_DE.model', use_gpu=False, **kwargs):
     # download the weight in case they are not present
     if not os.path.exists(load_path):
         print('Downloading model weights...')
-        os.system("curl https://transfer.sh/o8U0w/resnet_hyb_DE.model -o {}".format(load_path))
+        os.system("wget https://www.dropbox.com/s/on236kfn6v8swl9/resnet_hyb_DE.model")
         print('Done.')
             
     if use_gpu:
