@@ -24,14 +24,14 @@ The depth estimation has a higher error rate around the edges of the objects, wh
 Based on the focal length of our camera and the depth estimation we can transform image coordinates into 3D coordinates. The points in the point cloud are then colored based on their predicted semantic label.
 
 ### Requirements
-- python 3.5 or 3.6
-- pytorch
-- torchvision
-- opencv
-- matplotlib
-- numpy
-- colormap 
-- easydev
+The code was tested with:
+- python 3.5 and 3.6
+- pytorch (and torchvision) 0.4 to 1.0.0
+- opencv-python 3.4.3
+- matplotlib 2.2.3
+- numpy 1.15.4
+- colormap 1.0.2
+- easydev 0.9.37
 
 I used an NVIDIA card with ~8 GB memory for testing. Since the two networks will not necessarily fit into the memory of a single GPU it might be more practical to modify the code and run the depth and semantic predictions sequentially instead of parallelly.
 
