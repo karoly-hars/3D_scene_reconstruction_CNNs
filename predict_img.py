@@ -1,5 +1,4 @@
 import torch
-from torch.autograd import Variable
 from utils import load_img, show_img_preds, show_point_cloud
 import argparse
 import net
