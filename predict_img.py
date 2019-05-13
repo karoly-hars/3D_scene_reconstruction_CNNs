@@ -32,13 +32,12 @@ def main():
     print("Done.")
       
     # reading image
-    img = load_img(args.img_path)
+    img = torch.Tensor(load_img(args.img_path))
     
     # running model on the image
     if use_gpu:
-        img = Variable(img.cuda())
-    else:
-        img = Variable(img)
+        img = img.cuda()
+        
     print("Plotting...")
     output_de = model_de(img)
     output_seg = model_seg(img)

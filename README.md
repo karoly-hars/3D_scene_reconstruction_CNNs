@@ -26,7 +26,7 @@ Based on the focal length of our camera and the depth estimation we can transfor
 ### Requirements
 The code was tested with:
 - python 3.5 and 3.6
-- pytorch (and torchvision) 0.4 to 1.0.0
+- pytorch (and torchvision) 1.0.0 or higher
 - opencv-python 3.4.3
 - matplotlib 2.2.3
 - numpy 1.15.4
@@ -60,3 +60,4 @@ Lindau38          |  Munster43
 - use PCL or some other similar point cloud library for display instead of matploblib.
 - use some outlier detection on the point cloud for further improvement.
 - retrain the networks for larger (and wider) inputs, or just switch to more accurate CNNs.
+
