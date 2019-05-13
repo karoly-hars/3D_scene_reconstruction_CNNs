@@ -53,7 +53,7 @@ Lindau38          |  Munster43
  
 ### Remarks
 - the point clouds capture a very narrow region because a 320x320 image only represents a narrow slice of the environment. 
-- it seems that the depth estimation is often inaccurate around street furnitures (poles, traffic signs, etc).
+- it seems that the depth estimation is often inaccurate around street furniture (poles, traffic signs, etc).
 
 
 ### ToDo
