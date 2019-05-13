@@ -139,7 +139,6 @@ class ConConv(nn.Module):
 
 
 class ResnetUnetHybrid(nn.Module):
-
     def __init__(self, block, layers, output_channels):
 
         self.inplanes = 64

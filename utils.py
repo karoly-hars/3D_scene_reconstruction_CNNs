@@ -11,9 +11,9 @@ WIDTH = 320
 
 CLASSES = {0: "invalid", 1: "flat", 2: "constructions", 3: "street furnitures",
            4: "vegetation", 5: "sky", 6: "humans", 7: "vehicles"}
+
 CLASS_COLORS = {0: [0, 0, 0], 1: [1, 1, 0], 2: [1, 0.5, 0], 3: [0, 0, 1],
                 4: [0, 1, 0], 5: [0, 1, 1], 6: [1, 0.4, 1], 7: [1, 0, 0]}
-
 
 data_transform = transforms.Compose([
     transforms.ToTensor(),
@@ -132,7 +132,6 @@ def show_img_preds(img, depth_pred, seg_pred, uc_th=0.0, apply_depth_mask=False)
 
   
 def show_point_cloud(img, depth_pred, seg_pred, f_len, uc_th=0.0, apply_depth_mask=False):
-    
     img = correct_img(img)
     depth_pred = np.transpose(depth_pred, (1, 2, 0))
     depth_pred = depth_pred[:, :, 0]
