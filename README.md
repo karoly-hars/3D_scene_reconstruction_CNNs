@@ -1,6 +1,6 @@
 
 
-3D Scene Reconstruction From Single Monocular Images Using Deep Learning - Work in Progress
+3D Scene Reconstruction From Single Monocular Images Using Deep Learning
 ============================================
 My aim is to build a labeled 3D point cloud from monocular driving images. I predict depth and semantic information separately with two CNNs. Then, the depth predictions are used to build the point cloud and the points are labeled based on the segmentation.
 
@@ -54,10 +54,4 @@ Lindau38          |  Munster43
 ### Remarks
 - the point clouds capture a very narrow region because a 320x320 image only represents a narrow slice of the environment. 
 - it seems that the depth estimation is often inaccurate around street furniture (poles, traffic signs, etc).
-
-
-### ToDo
-- use PCL or some other similar point cloud library for display instead of matploblib.
-- use some outlier detection on the point cloud for further improvement.
-- retrain the networks for larger (and wider) inputs, or just switch to more accurate CNNs.
 
