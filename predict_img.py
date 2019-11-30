@@ -54,7 +54,7 @@ def predict_img(img_path, focal_len):
     print("Done")
 
 
-def parse_args():
+def get_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("img_path", type=str,  help="path to the RGB image input")
     parser.add_argument("focal_len", type=float,  help="focal length of the camera")
@@ -63,5 +63,5 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    args = parse_args()
+    args = get_arguments()
     predict_img(args.img_path, args.focal_len)
