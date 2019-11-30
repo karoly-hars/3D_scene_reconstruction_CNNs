@@ -240,7 +240,7 @@ def get_model(output, use_gpu=False):
         if not os.path.exists(load_path):
             print("Downloading model weights...")
             os.system("wget https://www.dropbox.com/s/on236kfn6v8swl9/resnet_hyb_DE.model")
-            print("Done.")
+
     else:
         load_path = "resnet_hyb_seg.model"
         model = ResnetUnetHybrid(Bottleneck, [3, 4, 6, 3], 7)
@@ -249,7 +249,6 @@ def get_model(output, use_gpu=False):
         if not os.path.exists(load_path):
             print("Downloading model weights...")
             os.system("wget https://www.dropbox.com/s/f4hw5p4wawx9u1z/resnet_hyb_seg.model")
-            print("Done.")
 
     if use_gpu:
         model.load_state_dict(torch.load(load_path))

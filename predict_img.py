@@ -5,12 +5,7 @@ import net
 import torch.nn.functional as F
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("img_path", type=str,  help="path to the RGB image input")
-    parser.add_argument("focal_len", type=float,  help="focal length of the camera")
-    args = parser.parse_args()
-    
+def predict_img(img_path, focal_len):    
     # switching to GPU if possible
     use_gpu = torch.cuda.is_available()
     print("\nusing GPU:", use_gpu)    
@@ -31,7 +26,7 @@ def main():
     print("Done.")
       
     # reading image
-    img = torch.Tensor(load_img(args.img_path))
+    img = torch.Tensor(load_img(img_path))
     
     # running model on the image
     if use_gpu:
@@ -55,9 +50,18 @@ def main():
     show_img_preds(img, output_de, output_seg, uc_th=0.9, apply_depth_mask=True)
 
     # visualize the points in 3D
-    show_point_cloud(img, output_de, output_seg, args.focal_len, uc_th=0.9, apply_depth_mask=True)
+    show_point_cloud(img, output_de, output_seg, focal_len, uc_th=0.9, apply_depth_mask=True)
     print("Done")
-    
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("img_path", type=str,  help="path to the RGB image input")
+    parser.add_argument("focal_len", type=float,  help="focal length of the camera")
+    args = parser.parse_args()
+    return args
+
 
 if __name__ == "__main__":
-    main()
+    args = parse_args()
+    predict_img(args.img_path, args.focal_len)
