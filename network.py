@@ -4,7 +4,7 @@ import os
 
 
 def conv3x3(in_planes, out_planes, stride=1):
-    # 3x3 convolution with padding
+    """3x3 convolution with padding."""
     return nn.Conv2d(in_planes, out_planes, kernel_size=3, stride=stride, padding=1, bias=False)
 
 
@@ -230,29 +230,34 @@ class ResnetUnetHybrid(nn.Module):
 
         return x
 
+    @classmethod
+    def load_pretrained(cls, output_type, use_gpu=False):
+        """Create model + download and load pretrained weights."""
+        db_links = {
+            'depth': 'https://www.dropbox.com/s/on236kfn6v8swl9/resnet_hyb_DE.model',
+            'seg': 'https://www.dropbox.com/s/f4hw5p4wawx9u1z/resnet_hyb_seg.model'
+        }
 
-def get_model(output, use_gpu=False):
-    if output == "depth":
-        load_path = "resnet_hyb_DE.model"
-        model = ResnetUnetHybrid(Bottleneck, [3, 4, 6, 3], 1)
+        load_paths = {
+            'depth': 'resnet_hyb_DE.model',
+            'seg': 'resnet_hyb_seg.model'
+        }
 
+        output_channels = {
+            'depth': 1,
+            'seg': 7,
+        }
+
+        model = cls(Bottleneck, [3, 4, 6, 3], output_channels[output_type])
         # download the weight in case they are not present
-        if not os.path.exists(load_path):
-            print("Downloading model weights...")
-            os.system("wget https://www.dropbox.com/s/on236kfn6v8swl9/resnet_hyb_DE.model")
+        if not os.path.exists(load_paths[output_type]):
+            print('Downloading model weights...')
+            os.system('wget {}'.format(db_links[output_type]))
 
-    else:
-        load_path = "resnet_hyb_seg.model"
-        model = ResnetUnetHybrid(Bottleneck, [3, 4, 6, 3], 7)
+        if use_gpu:
+            model.load_state_dict(torch.load(load_paths[output_type]))
+            model = model.cuda()
+        else:
+            model.load_state_dict(torch.load(load_paths[output_type], map_location='cpu'))
 
-        # download the weight in case they are not present
-        if not os.path.exists(load_path):
-            print("Downloading model weights...")
-            os.system("wget https://www.dropbox.com/s/f4hw5p4wawx9u1z/resnet_hyb_seg.model")
-
-    if use_gpu:
-        model.load_state_dict(torch.load(load_path))
-    else:
-        model.load_state_dict(torch.load(load_path, map_location="cpu"))
-
-    return model
+        return model
