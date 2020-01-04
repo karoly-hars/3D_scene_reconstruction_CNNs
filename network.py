@@ -254,6 +254,7 @@ class ResnetUnetHybrid(nn.Module):
             print('Downloading model weights...')
             os.system('wget {}'.format(db_links[output_type]))
 
+        model = model.to(device)
         model.load_state_dict(torch.load(load_paths[output_type], map_location=device))
 
         return model
