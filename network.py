@@ -231,7 +231,7 @@ class ResnetUnetHybrid(nn.Module):
         return x
 
     @classmethod
-    def load_pretrained(cls, output_type, use_gpu=False):
+    def load_pretrained(cls, output_type, device):
         """Create model + download and load pretrained weights."""
         db_links = {
             'depth': 'https://www.dropbox.com/s/on236kfn6v8swl9/resnet_hyb_DE.model',
@@ -254,10 +254,6 @@ class ResnetUnetHybrid(nn.Module):
             print('Downloading model weights...')
             os.system('wget {}'.format(db_links[output_type]))
 
-        if use_gpu:
-            model.load_state_dict(torch.load(load_paths[output_type]))
-            model = model.cuda()
-        else:
-            model.load_state_dict(torch.load(load_paths[output_type], map_location='cpu'))
+        model.load_state_dict(torch.load(load_paths[output_type], map_location=device))
 
         return model

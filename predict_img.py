@@ -9,13 +9,13 @@ import image_utils
 def predict_img(img_path, focal_len):
     """Given an image create a 3D model of the environment, based depth estimation and semantic segmentation."""
     # switch to GPU if possible
-    use_gpu = torch.cuda.is_available()
-    print('using GPU:', use_gpu)
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    print('Use GPU: {}'.format(str(device) != 'cpu'))
 
     # load models
     print('Loading models...')
-    model_de = ResnetUnetHybrid.load_pretrained(output_type='depth', use_gpu=use_gpu)
-    model_seg = ResnetUnetHybrid.load_pretrained(output_type='seg', use_gpu=use_gpu)
+    model_de = ResnetUnetHybrid.load_pretrained(output_type='depth', device=device)
+    model_seg = ResnetUnetHybrid.load_pretrained(output_type='seg', device=device)
     model_de.eval()
     model_seg.eval()
 
@@ -24,9 +24,7 @@ def predict_img(img_path, focal_len):
     img = image_utils.scale_image(img)
     img = image_utils.center_crop(img)
     inp = image_utils.img_transform(img)
-    inp = inp[None, :, :, :]
-    if use_gpu:
-        inp = inp.cuda()
+    inp = inp[None, :, :, :].to(device)
 
     print('Plotting...')
     output_de = model_de(inp)

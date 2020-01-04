@@ -26,7 +26,7 @@ Based on the focal length of our camera and the depth estimation we can transfor
 ### Requirements
 The code was tested with:
 - python 3.5 and 3.6
-- pytorch (and torchvision) 1.0.0 or higher
+- pytorch 1.3.1
 - opencv-python 3.4.3
 - matplotlib 2.2.3
 - numpy 1.15.4
