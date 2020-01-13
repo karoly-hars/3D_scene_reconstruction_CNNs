@@ -29,7 +29,7 @@ def predict_img(img_path, focal_len):
     print('Plotting...')
     output_de = model_de(inp)
     output_seg = model_seg(inp)
-    
+
     # up-sample outputs
     output_de = F.interpolate(output_de, size=(320, 320), mode='bilinear', align_corners=True)
     output_seg = F.interpolate(output_seg, size=(320, 320), mode='bilinear', align_corners=True)
