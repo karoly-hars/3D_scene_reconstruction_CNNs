@@ -47,14 +47,14 @@ def scale_image(img, scale=None):
 
 
 def center_crop(img):
-    """Center crop and image to HEIGHT x WIDTH."""
+    """Center crop the input image to HEIGHT x WIDTH."""
     corner = ((img.shape[0] - HEIGHT) // 2, (img.shape[1] - WIDTH) // 2)
     img = img[corner[0]:corner[0] + HEIGHT, corner[1]:corner[1] + WIDTH]
     return img
 
 
 def img_transform(img):
-    """Normalize and image."""
+    """Normalize the input image."""
     data_transform = transforms.Compose([
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
@@ -73,7 +73,7 @@ def create_plots(img, depth_pred, seg_pred, focal_len, uncertainty_threshold, ap
 
 
 def draw_img_preds(img, depth_pred, seg_pred, uncertainty_threshold=0.0, apply_depth_mask=False):
-    """Display the RGB image, and the corresponding depth and segmentation images next to each other."""
+    """Display the input RGB image, and the corresponding depth and segmentation images next to each other."""
     plt.figure(0, figsize=(8, 6))
 
     # plot input img
@@ -147,7 +147,7 @@ def draw_img_preds(img, depth_pred, seg_pred, uncertainty_threshold=0.0, apply_d
 
 
 def draw_point_cloud(img, depth_pred, seg_pred, f_len, uncertainty_threshold=0.0, apply_depth_mask=False):
-    """Create a segmented 3D pointcloud from the RGB image, the corresponding depth estimation and the segmentation."""
+    """Create a segmented 3D pointcloud from an RGB image, a corresponding depth estimation and a segmentation overlay."""
     depth_pred = np.transpose(depth_pred, (1, 2, 0))
     depth_pred = depth_pred[:, :, 0]
 
