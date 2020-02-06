@@ -249,7 +249,7 @@ class ResnetUnetHybrid(nn.Module):
         }
 
         model = cls(Bottleneck, [3, 4, 6, 3], output_channels[output_type])
-        # download the weight in case they are not present
+        # download the weights if they are not present
         if not os.path.exists(load_paths[output_type]):
             print('Downloading model weights...')
             os.system('wget {}'.format(db_links[output_type]))
