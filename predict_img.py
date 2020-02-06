@@ -7,7 +7,7 @@ import image_utils
 
 
 def predict_img(img_path, focal_len):
-    """Given an image create a 3D model of the environment, based depth estimation and semantic segmentation."""
+    """Given an image, create a 3D model of the environment, based depth estimation and semantic segmentation."""
     # switch to GPU if possible
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     print('Use GPU: {}'.format(str(device) != 'cpu'))
