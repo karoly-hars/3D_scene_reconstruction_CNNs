@@ -2,7 +2,7 @@
 
 3D Scene Reconstruction From Single Monocular Images Using Deep Learning
 ============================================
-My aim is to build a labeled 3D point cloud from monocular driving images. I predict depth and semantic information separately with two CNNs. Then, the depth predictions are used to build the point cloud and the points are labeled based on the segmentation.
+My aim is to build a sematincally labeled 3D point cloud from monocular driving images. I predict depth and semantic information separately with two CNNs. Then, the depth predictions are used to build the point cloud and the points are labeled/colored based on the segmentation.
 
 
 ### CNNs
@@ -12,9 +12,9 @@ The approach we described in our paper was [implemented using PyTorch](https://g
 
 The model for depth estimation has the exact same structure as the one in the paper. It is trained on the [Cityscapes dataset](https://www.cityscapes-dataset.com/dataset-overview/). I used all the available images from the 'train' and 'trainextra' subsets for training. 
 
-The model for segmentation also has a similar structure, but the last layer has 7 output channels for the 7 labels I used. It was trained on the [BDD100K](http://bair.berkeley.edu/blog/2018/05/30/bdd/) dataset. It categorizes pixels into the following classes: flat surface, building, street furniture, vegetation, sky, human, and vehicle.
+The model for segmentation also has a similar structure, but the last layer has 7 output channels, one for each of the classes in the segmentation task. It was trained on the [BDD100K](http://bair.berkeley.edu/blog/2018/05/30/bdd/) dataset. It categorizes pixels into the following classes: flat surface, building, street furniture, vegetation, sky, human, and vehicle.
 
-Both networks were trained on images with a size of 320x320 pixels. Their output size is 160x160. It is upsampled to 320x320 pixels to match the size input.
+Both networks were trained on images with a size of 320x320 pixels. Their output size is 160x160, but after inference, it is upsampled to 320x320 pixels to match the size input.
 
 Since the datasets contain driving images, using these models to create predictions in other environments will most likely lead to subpar results.
 
